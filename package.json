@@ -1,0 +1,16 @@
+{
+  "name": "nukemap-clone-by-lazar-popovic",
+  "version": "1.0.0",
+  "description": "Warhead testing app",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Lazar Popovic",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "parcel": "^2.12.0"
+  }
+}

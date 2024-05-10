@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nukemap clone by Lazar Popovic</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+    />
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/queries.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div id="map"></div>
+        <div class="options">
+          <aside>
+            <div>
+              <h1 class="main_title">
+                <span class="name">Nukemap</span>
+                <p class="author">clone by Lazar Popovic</p>
+              </h1>
+            </div>
+            <hr />
+            <div class="location">
+              <p>
+                1.<span class="first_bold">Drag</span> the marker to wherever
+                you'd like to target.
+              </p>
+              <select name="cities" class="select_options warheads">
+                <option value="">Or you can select a preset...</option>
+                <option value="washington">Washington, DC, USA</option>
+                <option value="new_york">New York, NY, USA</option>
+                <option value="boston">Boston, MA, USA</option>
+                <option value="los_angeles">Los Angeles, CA, USA</option>
+                <option value="chicago">Chicago, IL, USA</option>
+                <option value="philadelphia">Philadelphia, PA, USA</option>
+                <option value="honolulu">Honolulu, HI, USA</option>
+                <option value="moscow">Moscow, Russia</option>
+                <option value="london">London, England</option>
+                <option value="paris">Paris, France</option>
+                <option value="berlin">Berlin, Germany</option>
+                <option value="beijing">Bejing, China</option>
+                <option value="new_delhi">New Delhi, India</option>
+                <option value="islamabad">Islamabad, Pakistan</option>
+                <option value="tokyo">Tokyo, Japan</option>
+                <option value="pyongyang">Pyongyang, North Korea</option>
+                <option value="seoul">Seoul, South Korea</option>
+                <option value="teheran">Teheran, Iran</option>
+                <option value="tel_aviv">Tel Aviv, Isreal</option>
+                <option disabled>Historical locations:</option>
+                <option value="trinity">Trinity site, NM, USA (1945)</option>
+                <option value="hiroshima">Hiroshima, Japan (1945)</option>
+                <option value="nagasaki">Nagasaki, Japan (1945)</option>
+                <option value="elugelab">
+                  Elugelab, Enewetak, Marshall Islands
+                </option>
+                <option value="namu">
+                  Namu Island, Bikini Atoll, Marshall Islands (1945)
+                </option>
+                <option value="sedan">
+                  Sedan Crater, Nevada Test Site, NV, USA (1962)
+                </option>
+                <option value="tsar">
+                  Tsar Bomba site, Novaya Zemlya, Russia (1961)
+                </option>
+              </select>
+              <hr />
+              <div class="warhead">
+                <div class="warhead_first">
+                  <label for="warhead_kilotons"
+                    ><p>
+                      2.<span class="first_bold">Choose a warhead yield:</span>
+                    </p></label
+                  >
+                  <input
+                    type="text"
+                    class="input_kilotons"
+                    name="warhead_kilotons"
+                  />
+                  <p>kilotons</p>
+                </div>
+                <div class="warhead_second">
+                  <select name="bombs" class="select_options warhead_switch">
+                    <option value="">Or you can select a preset...</option>
+                    <option value="Davy">
+                      "Davy Crockett" - smallest US bomb produced (20 t)
+                    </option>
+                    <option value="Crude">
+                      Crude nuclear terrorist weapon (100 t)
+                    </option>
+                    <option value="B-61">
+                      B-61 Mod 3 (lowest kt currently in US arsenal) (300t)
+                    </option>
+                    <option value="NK06">
+                      North Krean weapon tested in 2006 (300 t)
+                    </option>
+                    <option value="NK09">
+                      North Krean weapon tested in 2009 (6 kt)
+                    </option>
+                    <option value="NK13">
+                      North Krean weapon tested in 2013 (10 kt)
+                    </option>
+                    <option value="HEU">
+                      Improvised HEU device - nuclear terrorism (10 kt)
+                    </option>
+                    <option value="little">
+                      "Little Boy" - Hiroshima bomb (15 kt)
+                    </option>
+                    <option value="gadget">
+                      "Gadget" - Trinity test (20 kt)
+                    </option>
+                    <option value="fat">
+                      "Fat Man" - Nagasaki bomb (20 kt)
+                    </option>
+                    <option value="pakistani">
+                      Largest Pakistani weapon tested (45 kt)
+                    </option>
+                    <option value="indian">
+                      Largest Indian weapon tested (60 kt)
+                    </option>
+                    <option value="W-76">
+                      W-76 (common in US & UK SLBM arsenal) (100 kt)
+                    </option>
+                    <option value="NK17">
+                      North Korean weapon tested in 2017 (150 kt?)
+                    </option>
+                    <option value="W-80">
+                      W-80 (currently in US arsenal, cruise missile) (150 kt)
+                    </option>
+                    <option value="W-87">
+                      W-87 (currently in US arsenal, Minuteman III) (300 kt)
+                    </option>
+                    <option value="TN">
+                      TN 80/81 (largest current French warhead) (300 kt)
+                    </option>
+                    <option value="B-61mod">
+                      B-61 Mod 7 (currently in US arsenal) (340 kt)
+                    </option>
+                    <option value="W-78">
+                      W-78 (currently in US arsenal, Minuteman III) (350 kt)
+                    </option>
+                    <option value="W-88">
+                      W-88 (Trident D5 warhead) (455 kt)
+                    </option>
+                    <option value="king">
+                      "Ivy King" - largest pure fission weapon tested by USA
+                      (500 kt)
+                    </option>
+                    <option value="topol">
+                      Topol (SS-25) (currently in Russian arsenal) (800 kt)
+                    </option>
+                    <option value="W-59">
+                      W-59 (Minuteman I warhead) (1 Mt)
+                    </option>
+                    <option value="B-83">
+                      B-83 (largest bomb in current US arsenal) (1.2 Mt)
+                    </option>
+                    <option value="R-12">
+                      R-12 (SS-4) Soviet missile, Cuban missile crisis (2.42 Mt)
+                    </option>
+                    <option value="dong4">
+                      Dong Feng-4, China's first deployed ICBM (3.3 Mt)
+                    </option>
+                    <option value="W-39">
+                      W-39, US H-bomb, almost accidentally detonated in 1961 (4
+                      Mt)
+                    </option>
+                    <option value="dong5">
+                      Dong Feng-5, China's current ICBMs (5 Mt)
+                    </option>
+                    <option value="W-53">
+                      "W-53 (Titan II warhead, highest kt ICBM US deployed) (9
+                      Mt)
+                    </option>
+                    <option value="mike">
+                      "Ivy Mike" - first H-bomb (10.4 Mt)
+                    </option>
+                    <option value="bravo">
+                      "Castle Bravo" - largest US bomb tested (15 Mt)
+                    </option>
+                    <option value="tsar1">
+                      "Tsar Bomba" - largest USSR bomb tested (50 Mt)
+                    </option>
+                    <option value="tsar2">
+                      "Tsar Bomba" - largest USSR bomb designed (100 Mt)
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <hr />
+              <div class="warhead">
+                <div class="warhead_first">
+                  <p>3.<span class="first_bold">Options:</span></p>
+                  <p class="label_text">Height of burst:</p>
+                  <div class="radio_flex">
+                    <div class="radio_flex1">
+                      <input
+                        type="radio"
+                        class="radio airburst_radio"
+                        name="detonation"
+                        value="airburst"
+                      />
+                      <label for="airburst" class="label_text2">Airburst</label>
+                    </div>
+                    <div class="radio_flex2">
+                      <input
+                        type="radio"
+                        class="radio surface_radio"
+                        name="detonation"
+                        value="surface"
+                        checked="checked"
+                      />
+                      <label for="surface" class="label_text2">Surface</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="warhead">
+                <p>
+                  4.<span class="first_bold">Click </span>the "Detonate" button
+                  below.
+                </p>
+                <div class="all_buttons">
+                  <button class="detonate_button">Detonate</button>
+                  <div class="button_effects">
+                    <button class="effect_button button_clear">
+                      clear all effects
+                    </button>
+                    <button class="effect_button button_add">
+                      add new detonation
+                    </button>
+                  </div>
+                </div>
+                <p class="note_size">
+                  <span class="first_bold">Note</span> that you can drag the
+                  target marker after you have detonated the nuke.
+                </p>
+                <div class="alert"></div>
+              </div>
+              <hr />
+              <div class="container_effects">
+                <div class="all_effects">
+                  <div class="effect_title">
+                    <div class="title_image"></div>
+                    <div class="title_image2"></div>
+                    <div class="title_image3"></div>
+                    <div class="title_image4"></div>
+                    <div class="title_image5"></div>
+                    <div class="title_image6"></div>
+                    <div class="main_title"></div>
+                  </div>
+                  <div class="effect_text"></div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<script type="module" src="src/js/controller.js"></script>

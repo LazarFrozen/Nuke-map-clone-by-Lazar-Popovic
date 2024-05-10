@@ -1,0 +1,279 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Anonymous Pro", monospace;
+  font-size: 1.4rem;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+#map {
+  height: 100%;
+  width: 75%;
+}
+
+.options {
+  width: 25%;
+  height: 100%;
+  background-color: #d3d3d3;
+  padding: 2rem;
+  overflow-y: auto;
+  z-index: 99999;
+}
+
+.main_title {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.name {
+  text-transform: uppercase;
+  font-size: 4.8rem;
+}
+
+.location {
+  padding-top: 1.2rem;
+}
+
+.first_bold {
+  font-weight: 700;
+}
+
+.select_options {
+  height: 3.2rem;
+  font-size: 1.6rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+option:disabled {
+  font-weight: 700;
+  color: #000001;
+}
+
+.label_text {
+  font-style: italic;
+}
+
+.radio_flex {
+  display: flex;
+}
+
+.label_font {
+  font-size: 1rem;
+}
+
+.submit_button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.warhead {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.warhead_first {
+  display: flex;
+  align-items: center;
+}
+
+.warheads {
+  margin-bottom: 1rem;
+}
+
+.input_kilotons {
+  height: 3.8rem;
+  width: 12.8rem;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+  font-size: 2.4rem;
+  text-align: right;
+  padding: 0.5rem;
+}
+
+.radio {
+  cursor: pointer;
+  margin-left: 1.2rem;
+}
+
+.label_text2 {
+  margin-left: 0.5rem;
+}
+
+.all_buttons {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.detonate_button {
+  cursor: pointer;
+  font-size: 2rem;
+  width: 12.8rem;
+  height: 4.8rem;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(189, 55, 55, 1) 0%,
+    rgba(218, 67, 29, 1) 50%,
+    rgba(255, 171, 171, 1) 100%
+  );
+  color: #ffffff;
+}
+
+.button_effects {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 0.8rem;
+}
+
+.effect_button {
+  cursor: pointer;
+  height: 2rem;
+  width: 12.8rem;
+}
+
+.note_size {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.leaflet-control-layers-base {
+  font-size: 1.6rem;
+  font-family: "Anonymous Pro", monospace;
+}
+
+.leaflet-control-scalefactor {
+  padding: 10rem;
+}
+
+.leaflet-control-scale-line {
+  width: 10rem !important;
+  height: 3.2rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.effect_text {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.main_title {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.6rem;
+  padding: 0rem 1rem 0 1rem;
+}
+
+.author {
+  display: flex;
+  align-items: end;
+  padding-bottom: 0.5rem;
+}
+
+.title_image {
+  flex: none;
+  display: none;
+  background-color: rgba(255, 165, 0, 0.3);
+  border: 1px solid #ffff00;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.title_image2 {
+  flex: none;
+  display: none;
+  background-color: rgba(255, 165, 0, 0.3);
+  border: 1px solid #ffa500;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.title_image3 {
+  flex: none;
+  display: none;
+  background-color: rgba(128, 128, 128, 0.3);
+  border: 1px solid #808080;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.title_image4 {
+  flex: none;
+  display: none;
+  background-color: rgba(128, 128, 128, 0.3);
+  border: 1px solid #808080;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.title_image5 {
+  flex: none;
+  display: none;
+  background-color: rgba(223, 32, 32, 0.3);
+  border: 1px solid #df2020;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.title_image6 {
+  flex: none;
+  display: none;
+  background-color: rgba(0, 255, 0, 0.3);
+  border: 1px solid #00ff00;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.effect_title {
+  display: flex;
+  padding-left: 1rem;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.all_effects:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.all_effects {
+  background-color: #d3d3d3;
+  border: none;
+}
+
+.container_effects:first-child {
+  background-color: #d3d3d3;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.alert {
+  color: #df2020;
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.container_effects .effect_title {
+  background-color: none;
+}
