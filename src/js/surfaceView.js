@@ -14,7 +14,7 @@ class SurfaceView extends AirburstView {
   mapEl = document.querySelector("#map");
   surfaceData = {};
 
-  // Displaying informations about detonation
+  // Displaying informations about surface detonation
   displaySurfaceContent(modelData) {
     const fireballDisplay = `<div class="container_effects"><div class="all_effects">
     <div class="effect_title">
@@ -152,7 +152,6 @@ class SurfaceView extends AirburstView {
     this.mapEl.insertAdjacentHTML("afterbegin", error);
   }
 
-  // Detonate button
   detonateButton(handlerSurface, handlerAir) {
     this.detonate.addEventListener("click", (e) => {
       if (this.radioSurface.checked) {
@@ -213,7 +212,7 @@ class SurfaceView extends AirburstView {
     });
   }
 
-  // Rendering circle on a map based of the kilotons input
+  // Rendering circle on a map based of the kilotons input for surface
   displayCircle() {
     L.circle([this.marker.getLatLng().lat, this.marker.getLatLng().lng], {
       color: "#FFA500",

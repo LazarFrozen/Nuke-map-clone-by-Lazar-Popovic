@@ -280,26 +280,6 @@ option:disabled {
   background-color: none;
 }
 
-.spinner {
-  margin: 15rem auto;
-  text-align: center;
-}
-
-.spinner img {
-  height: 10rem;
-  width: 10rem;
-  animation: rotate 2s infinite linear;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .error {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 export default class AirburstView {
   airburstData = {};
 
+  // Displaying informations about airburst detonation
   displayAirContent(airData) {
     const fireballDisplayAir = `<div class="container_effects"><div class="all_effects">
     <div class="effect_title">
@@ -97,6 +98,7 @@ export default class AirburstView {
     this.airburstData.radiationMAir = airData.radiationAir.radiationMAir;
   }
 
+  // Rendering circle on a map based of the kilotons input for airburst
   displayCircleAir() {
     L.circle([this.marker.getLatLng().lat, this.marker.getLatLng().lng], {
       color: "#FFA500",

@@ -9,6 +9,7 @@ class LayerView extends AirburstView {
     const defaultMap = L.tileLayer(
       "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
       {
+        minZoom: 3,
         maxZoom: 19,
         attribution:
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -21,8 +22,8 @@ class LayerView extends AirburstView {
       {
         attribution:
           '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 0,
-        maxZoom: 22,
+        minZoom: 3,
+        maxZoom: 19,
         accessToken:
           "zmq1MRBFeCvASyKl64kSW9JCNT81HinGwcvhjB4xT570NSCVAbH3gfRp7AJUHSmg",
       }
@@ -36,7 +37,8 @@ class LayerView extends AirburstView {
       "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       {
         attribution: "&copy; " + mapLink + ", " + wholink,
-        maxZoom: 18,
+        minZoom: 3,
+        maxZoom: 19,
       }
     );
     // Layer control
