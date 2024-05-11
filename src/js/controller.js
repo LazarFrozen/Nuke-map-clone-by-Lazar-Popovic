@@ -1,7 +1,9 @@
 import * as model from "./model.js";
 import LayerView from "./layerView.js";
 import SurfaceView from "./surfaceView.js";
+import surfaceView from "./surfaceView.js";
 
+// Managing surface inputs
 const controlSurfaceDetonate = async function () {
   try {
     const kilotons = SurfaceView.kilotonsInput.value;
@@ -20,10 +22,11 @@ const controlSurfaceDetonate = async function () {
 
     SurfaceView.displaySurfaceContent(model.modelData);
   } catch (err) {
-    console.log(err);
+    SurfaceView.renderError(`${err}`);
   }
 };
 
+// Managing airburst inputs
 const controlAirDetonate = async function () {
   try {
     const kilotons = SurfaceView.kilotonsInput.value;
@@ -42,7 +45,7 @@ const controlAirDetonate = async function () {
 
     SurfaceView.displayAirContent(model.airData);
   } catch (err) {
-    console.log(err);
+    SurfaceView.renderError(`${err}`);
   }
 };
 
@@ -63,7 +66,7 @@ const mapMarker = async function () {
     const locationsInfo = await model.locationsInfo();
     SurfaceView.locationData(locationsInfo);
   } catch (err) {
-    console.log(err);
+    SurfaceView.renderError(`${err}`);
   }
 };
 mapMarker();

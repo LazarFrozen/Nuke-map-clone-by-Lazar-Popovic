@@ -9,7 +9,7 @@ export const warheadInfo = async function () {
     const result = await response.json();
     return result;
   } catch (err) {
-    console.log(err);
+    throw new Error("Can not load warhead data");
   }
 };
 
@@ -24,7 +24,7 @@ export const locationsInfo = async function () {
     const result = await response.json();
     return result;
   } catch (err) {
-    console.log(err);
+    throw new Error("Can not load location data");
   }
 };
 
@@ -50,7 +50,7 @@ export const markerFunc = async function () {
 
     return marker;
   } catch (err) {
-    console.log(err);
+    throw new Error("Can not load marker");
   }
 };
 

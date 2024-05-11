@@ -11,6 +11,7 @@ class SurfaceView extends AirburstView {
   radioSurface = document.querySelector(".surface_radio");
   radioAirburst = document.querySelector(".airburst_radio");
   addNewDetonation = document.querySelector(".button_add");
+  mapEl = document.querySelector("#map");
   surfaceData = {};
 
   // Displaying informations about detonation
@@ -136,6 +137,19 @@ class SurfaceView extends AirburstView {
         }
       });
     });
+  }
+
+  renderError(message) {
+    const error = `
+    <div class="error">
+      <div>
+        <img src="img/error.png" alt="Error sign" class="error-img" />
+      </div>
+      <p class="error-text">${message}</p>
+    </div>
+    `;
+    this.removeAll();
+    this.mapEl.insertAdjacentHTML("afterbegin", error);
   }
 
   // Detonate button
