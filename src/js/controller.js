@@ -1,39 +1,59 @@
 import * as model from "./model.js";
 import LayerView from "./layerView.js";
 import SurfaceView from "./surfaceView.js";
-import AirburstView from "./airburstView.js";
 
-const controlDetonate = async function () {
+const controlSurfaceDetonate = async function () {
   try {
     const kilotons = SurfaceView.kilotonsInput.value;
 
-    const fireball = model.calculateFireballSurface(kilotons);
-    // SurfaceView.displaySurfaceFireball(fireball);
+    model.calculateFireballSurface(kilotons);
 
-    const threeDBsurface = model.calculateThreeDBSurface(kilotons);
-    SurfaceView.displaySurfaceFireball(model.modelData);
+    model.calculateThreeDBSurface(kilotons);
 
-    const fireballAir = model.calculateFireballAirburst(kilotons);
-    AirburstView.displayAirFireball(fireballAir);
+    model.calculateLightBlastDamageSurface(kilotons);
+
+    model.calculateMediumBlastDamageSurface(kilotons);
+
+    model.calculateRadiationDamageSurface(kilotons);
+
+    model.calculateHeavyBlastDamageSurface(kilotons);
+
+    SurfaceView.displaySurfaceContent(model.modelData);
   } catch (err) {
     console.log(err);
   }
 };
 
-const controlAirBurst = async function () {
+const controlAirDetonate = async function () {
   try {
-    const kilotons = AirburstView.kilotonsInput.value;
+    const kilotons = SurfaceView.kilotonsInput.value;
+
+    model.calculateFireballAirburst(kilotons);
+
+    model.calculateThreeDBAir(kilotons);
+
+    model.calculateLightBlastDamageAir(kilotons);
+
+    model.calculateModerateBlastDamageAir(kilotons);
+
+    model.calculateHeavyBlastDamageAir(kilotons);
+
+    model.calculateRadiationAir(kilotons);
+
+    SurfaceView.displayAirContent(model.airData);
   } catch (err) {
     console.log(err);
   }
 };
 
-const MapMarker = async function () {
+const mapMarker = async function () {
   try {
     // Sending marker, map info
     const marker = await model.markerFunc();
     SurfaceView.setMarker(marker);
     SurfaceView.setMap(model.map);
+
+    LayerView.initMap(model.map, marker);
 
     // Sending warhead data
     const warheadInfo = await model.warheadInfo();
@@ -46,10 +66,10 @@ const MapMarker = async function () {
     console.log(err);
   }
 };
-MapMarker();
+mapMarker();
 
 const initialization = function () {
-  LayerView.initMap(model.map);
-  SurfaceView.detonateButton(controlDetonate);
+  SurfaceView.detonateButton(controlSurfaceDetonate, controlAirDetonate);
+  SurfaceView.newDetonation(controlSurfaceDetonate, controlAirDetonate);
 };
 initialization();

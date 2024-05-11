@@ -1,6 +1,9 @@
-class LayerView {
-  initMap(map) {
+import AirburstView from "./airburstView.js";
+
+class LayerView extends AirburstView {
+  initMap(map, marker) {
     this.map = map;
+    this.marker = marker;
 
     // Default map
     const defaultMap = L.tileLayer(
@@ -53,11 +56,10 @@ class LayerView {
       collapsed: false,
       defaultMarkGeocode: false,
     })
-      .on("markgeocode", function (e) {
+      .on("markgeocode", (e) => {
         const latlng = e.geocode.center;
         this.marker.setLatLng(latlng).update();
         this.map.fitBounds(e.geocode.bbox);
-        console.log(latlng);
       })
       .addTo(this.map);
   }
