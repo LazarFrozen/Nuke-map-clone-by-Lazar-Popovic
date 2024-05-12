@@ -1,7 +1,6 @@
 import * as model from "./model.js";
 import LayerView from "./layerView.js";
 import SurfaceView from "./surfaceView.js";
-import surfaceView from "./surfaceView.js";
 
 // Managing surface inputs
 const controlSurfaceDetonate = async function () {
