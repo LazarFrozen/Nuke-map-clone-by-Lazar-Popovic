@@ -68,7 +68,7 @@
 /* Below 600px */
 @media (max-width: 37.5em) {
   .leaflet-control-geocoder {
-    width: 20rem;
+    width: 25rem;
   }
   .leaflet-control-geocoder-form {
     width: 10rem;
