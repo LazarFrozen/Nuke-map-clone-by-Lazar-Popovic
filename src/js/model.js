@@ -1,7 +1,9 @@
-// exporting preset warheads data
+import nukeIcon from "url:/img/nuke-marker.png";
+
+// exporting preset warhead data
 export const warheadInfo = async function () {
   try {
-    const response = await fetch("warheads.json");
+    const response = await fetch("https://api.npoint.io/5077f97e6fe40445d610");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -16,7 +18,7 @@ export const warheadInfo = async function () {
 // exporting preset location data
 export const locationsInfo = async function () {
   try {
-    const response = await fetch("locations.json");
+    const response = await fetch("https://api.npoint.io/650b99fa283e8cbe05bc");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -32,26 +34,22 @@ export const locationsInfo = async function () {
 export const map = L.map("map").setView([44.787197, 20.457273], 13);
 
 // Displaying marker
-export const markerFunc = async function () {
-  try {
-    const iconOptions = {
-      iconUrl: "IMG/nuke-marker.png",
-      iconSize: [30, 50],
-      iconAnchor: [15, 50],
-    };
+export const markerFunc = function () {
+  const iconOptions = {
+    iconUrl: nukeIcon,
+    iconSize: [30, 50],
+    iconAnchor: [15, 50],
+  };
 
-    const customIcon = L.icon(iconOptions);
-    const markerOptions = {
-      icon: customIcon,
-      draggable: true,
-    };
+  const customIcon = L.icon(iconOptions);
+  const markerOptions = {
+    icon: customIcon,
+    draggable: true,
+  };
 
-    let marker = L.marker([44.787197, 20.457273], markerOptions).addTo(map);
+  let marker = L.marker([44.787197, 20.457273], markerOptions).addTo(map);
 
-    return marker;
-  } catch (err) {
-    throw new Error("Can not load marker");
-  }
+  return marker;
 };
 
 // Storing surface data based on kilotons input

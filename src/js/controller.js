@@ -3,56 +3,50 @@ import LayerView from "./layerView.js";
 import SurfaceView from "./surfaceView.js";
 
 // Managing surface inputs
-const controlSurfaceDetonate = async function () {
-  try {
-    const kilotons = SurfaceView.kilotonsInput.value;
+const controlSurfaceDetonate = function () {
+  const kilotons = SurfaceView.kilotonsInput.value;
 
-    model.calculateFireballSurface(kilotons);
+  model.calculateFireballSurface(kilotons);
 
-    model.calculateThreeDBSurface(kilotons);
+  model.calculateThreeDBSurface(kilotons);
 
-    model.calculateLightBlastDamageSurface(kilotons);
+  model.calculateLightBlastDamageSurface(kilotons);
 
-    model.calculateMediumBlastDamageSurface(kilotons);
+  model.calculateMediumBlastDamageSurface(kilotons);
 
-    model.calculateRadiationDamageSurface(kilotons);
+  model.calculateRadiationDamageSurface(kilotons);
 
-    model.calculateHeavyBlastDamageSurface(kilotons);
+  model.calculateHeavyBlastDamageSurface(kilotons);
 
-    SurfaceView.displaySurfaceContent(model.modelData);
-  } catch (err) {
-    SurfaceView.renderError(`${err}`);
-  }
+  SurfaceView.displaySurfaceContent(model.modelData);
 };
 
 // Managing airburst inputs
-const controlAirDetonate = async function () {
-  try {
-    const kilotons = SurfaceView.kilotonsInput.value;
+const controlAirDetonate = function () {
+  const kilotons = SurfaceView.kilotonsInput.value;
 
-    model.calculateFireballAirburst(kilotons);
+  model.calculateFireballAirburst(kilotons);
 
-    model.calculateThreeDBAir(kilotons);
+  model.calculateThreeDBAir(kilotons);
 
-    model.calculateLightBlastDamageAir(kilotons);
+  model.calculateLightBlastDamageAir(kilotons);
 
-    model.calculateModerateBlastDamageAir(kilotons);
+  model.calculateModerateBlastDamageAir(kilotons);
 
-    model.calculateHeavyBlastDamageAir(kilotons);
+  model.calculateHeavyBlastDamageAir(kilotons);
 
-    model.calculateRadiationAir(kilotons);
+  model.calculateRadiationAir(kilotons);
 
-    SurfaceView.displayAirContent(model.airData);
-  } catch (err) {
-    SurfaceView.renderError(`${err}`);
-  }
+  SurfaceView.displayAirContent(model.airData);
 };
 
 const mapMarker = async function () {
   try {
     // Sending marker, map info
-    const marker = await model.markerFunc();
+    const marker = model.markerFunc();
+
     SurfaceView.setMarker(marker);
+
     SurfaceView.setMap(model.map);
 
     LayerView.initMap(model.map, marker);

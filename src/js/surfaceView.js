@@ -1,4 +1,5 @@
 import AirburstView from "./airburstView.js";
+import errorImg from "url:/img/error.png";
 
 class SurfaceView extends AirburstView {
   detonate = document.querySelector(".detonate_button");
@@ -143,7 +144,7 @@ class SurfaceView extends AirburstView {
     const error = `
     <div class="error">
       <div>
-        <img src="img/error.png" alt="Error sign" class="error-img" />
+        <img src=${errorImg} alt="Error sign" class="error-img" />
       </div>
       <p class="error-text">${message}</p>
     </div>
