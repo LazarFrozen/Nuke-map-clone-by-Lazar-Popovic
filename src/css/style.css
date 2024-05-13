@@ -25,6 +25,14 @@ body {
   width: 75%;
 }
 
+.leaflet-control-geocoder-form input {
+  font-size: 1.6rem;
+}
+
+.leaflet-container {
+  font-size: 1.6rem;
+}
+
 .options {
   width: 25%;
   height: 100%;
