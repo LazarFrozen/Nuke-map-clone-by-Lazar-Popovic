@@ -365,6 +365,7 @@ class SurfaceView extends AirburstView {
     }
     if (this.kilotonsInput.value > 100000) {
       // legacy
+      this.kilotonsInput.value = 100000;
       window.alert(
         "The NUKEMAP clone cannot accurately model yields more than 100,000 kilotons (100 megatons)."
       );
